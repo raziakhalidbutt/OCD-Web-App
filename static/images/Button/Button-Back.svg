@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="88px" height="32px" viewBox="0 0 88 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Button-Back</title>
+    <g id="Button-Back" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M0,8 C0,3.58172 3.58172,0 8,0 L80,0 C84.4183,0 88,3.58172 88,8 L88,24 C88,28.4183 84.4183,32 80,32 L8,32 C3.58172,32 0,28.4183 0,24 L0,8 Z" id="Path" fill="#39B54A" transform="translate(44.000000, 16.000000) scale(-1, 1) translate(-44.000000, -16.000000) "></path>
+        <g id="Group" transform="translate(45.333400, 15.500000) scale(-1, 1) translate(-45.333400, -15.500000) translate(17.666800, 6.000000)" fill="#FFFFFF">
+            <polygon id="Path" fill-rule="nonzero" points="49.9998 4.6667 49.0598 5.6067 52.7798 9.3334 44.6665 9.3334 44.6665 10.6667 52.7798 10.6667 49.0598 14.3934 49.9998 15.3334 55.3332 10"></polygon>
+            <text id="Back" transform="translate(18.000000, 9.500000) scale(-1, 1) translate(-18.000000, -9.500000) " font-family='Roboto, sans-serif' font-size="16" font-weight="normal">
+                <tspan x="0" y="15">Back</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

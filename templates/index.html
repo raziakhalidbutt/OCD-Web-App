@@ -1,0 +1,76 @@
+
+{% extends "layout.html" %}
+
+
+{%block content%}
+
+<body>
+	<div class="container">
+        <div style="width: 100%; height: auto; position: relative">
+            <div class="undraw-discoverable-xws" >
+                <img  src = "static\images\Step 1_ Type\undraw_discoverable_xwsc.svg" />
+            </div>
+            <h1 class="vocabulary-explorer">Vocabulary Explorer</h1>
+            <h2 class="analysing-ocd-relate">Analyzing OCD related words</h2>
+        </div>
+        
+		<div class="row ">
+			<div class=" col-lg-12 form-group-lg">
+				<div class="px-0 pt-4 pb-0 mt-3 mb-3">
+					<form id="form" method="get">
+						<ul id="progressbar">
+							<li class="active" id="step1">Get Started</li>
+							<li id="step2">Sub-Type</li>
+							<li id="step3">Vocabulary Type</li>
+							<li id="step4">Search Query</li>
+                            <li id="step5">Select Model</li>
+						</ul>
+						
+						<fieldset>
+							<h2 class="choose-your-desired">Choose Your Desired Type</h2>
+                            <div class="container" >
+                                <div class="radio-tile-group">
+                                    <div class="input-container">
+                                        
+                                        <input id="Obsessions" class="radio-button" type="radio" name="radio" value="Obsessions" onclick="displayRadioValue()" />
+                                        <div class="radio-tile">
+                                            <div class="icon Obsessions-icon">
+                                                <img  src = "static\images\Step 1_ Type\Obsessions.svg" />
+                                            </div>
+                                            <label for="Obsessions" class="radio-tile-label">Obsessions</label>
+                                        </div>
+                                    </div>
+                                    <div class="input-container">
+                                        <input id="Compulsions" class="radio-button" type="radio" name="radio" value="Compulsions" onclick="displayRadioValue()" />
+                                        <div class="radio-tile">
+                                            <div class="icon Compulsions-icon">
+                                                <img  src = "static\images\Step 1_ Type\Compulsions.svg" />
+                                            </div>
+                                            <label for="Compulsions" class="radio-tile-label">Compulsions</label>
+                                        </div>
+                                    </div>
+                                </div>  
+                            </div>
+                              <input type="hidden" id="step1" name="type" value="" >
+                            <button type="button" class="next-step" onclick="next()"><img  src = "static\images\Button\Button.svg"/></button>
+							<!-- <input type="button" name="next-step" class="next-step fa fa-arrow-right" value="Next &#xf061" onclick="next()" /> -->
+                                
+						</fieldset>
+                       
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+    function displayRadioValue() {
+        
+        var ele = $("input[type=radio]:checked").val(); 
+        document.getElementById("step1").innerHTML= ele;
+        var category  = ele;
+        sessionStorage.setItem("category", category);
+         
+    }
+</script>
+{%endblock%}

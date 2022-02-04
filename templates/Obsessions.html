@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+
+{%block content%}
+
+<body>
+	<div class="container">
+        
+        <div style="width: 100%; height: auto; position: relative">
+            <div class="undraw-discoverable-xws" >
+                <img  src = "static\images\Step 1_ Type\undraw_discoverable_xwsc.svg" />
+            </div>
+        </div>
+        <h1 class="vocabulary-explorer">Vocabulary Explorer</h1>
+        <h2 class="analysing-ocd-relate">Analyzing OCD related words</h2>
+		<div class="row">
+			<div class="col-lg-12 form-group-lg">
+				<div class="px-0 pt-4 pb-0 mt-3 mb-3">
+					<form id="form" action="/Related Vocabulary" method="get">
+						<ul id="progressbar">
+							<li class="active" id="step1">Get Started</li>
+							<li class="active" id="step2">Sub-Type</li>
+							<li id="step3">Vocabulary Type</li>
+							<li id="step4">Search Query</li>
+                            <li id="step5">Select Model</li>
+						</ul>
+						
+						<fieldset>
+                         <h2  class="choose-your-desired">Choose the Sub-Type</h2>
+                            <div class="container">
+                                <div class="radio-tile-group">
+                                    <div class="input-container0">
+                                        <input id="contamination" class="radio-button" type="radio" name="type" value="Contamination" onclick="displayRadioValue()"/>
+                                        <div class="radio-tile0">
+                                            <div class="icon sub-icon">
+                                                <img  src = "static\images\Step 2_ Sub-Type Obsession\germ.png" />
+                                            </div>
+                                            <label for="contamination" class="radio-tile-label0">Contamination</label>
+                                        </div>
+                                    </div>
+                                    <div class="input-container0">
+                                        <input id="sexual" class="radio-button" type="radio" name="type" value="Sexual" onclick="displayRadioValue()"/>
+                                        <div class="radio-tile0">
+                                            <div class="icon sub-icon">
+                                                <img  src = "static\images\Step 2_ Sub-Type Obsession\sexual-2.png" />
+                                            </div>
+                                            <label for="sexual" class="radio-tile-label0">Sexual</label>
+                                        </div>
+                                    </div>
+                                    <div class="input-container0">
+                                        <input id="religious" class="radio-button" type="radio" name="type" value="Religious" onclick="displayRadioValue()"/>
+                                        <div class="radio-tile0">
+                                            <div class="icon sub-icon">
+                                                <img  src = "static\images\Step 2_ Sub-Type Obsession\pray.png" />
+                                            </div>
+                                            <label for="religious" class="radio-tile-label0">Religious</label>
+                                        </div>
+                                    </div>
+                                    <div class="input-container0">
+                                        <input id="aggressive" class="radio-button" type="radio" name="type" value="Aggressive" onclick="displayRadioValue()"/>
+                                        <div class="radio-tile0">
+                                            <div class="icon sub-icon">
+                                                <img  src = "static\images\Step 2_ Sub-Type Obsession\bomb.png" />
+                                            </div>
+                                            <label for="aggressive" class="radio-tile-label0">Aggressive</label>
+                                        </div>
+                                    </div>
+                                    <div class="input-container0">
+                                        <input id="symmetry" class="radio-button" type="radio" name="type" value="Symmetry"onclick="displayRadioValue()" />
+                                        <div class="radio-tile0">
+                                            <div class="icon sub-icon">
+                                                <img  src = "static\images\Step 2_ Sub-Type Obsession\mirror-horizontally.png" />
+                                            </div>
+                                            <label for="symmetry" class="radio-tile-label0">Symmetry</label>
+                                        </div>
+                                    </div>
+                                    <div class="input-container0">
+                                        <input id="hoarding" class="radio-button" type="radio" name="type" value="Hoarding" onclick="displayRadioValue()"/>
+                                        <div class="radio-tile0">
+                                            <div class="icon sub-icon">
+                                                <img  src = "static\images\Step 2_ Sub-Type Obsession\recycle-bin.png" />
+                                            </div>
+                                            <label for="hoarding" class="radio-tile-label0">Hoarding</label>
+                                        </div>
+                                    </div>
+                                </div>  
+                            </div>
+                            <div id="error_message"></div>
+                            <button id="btn" type="submit" class="next-step" ><img  src = "static\images\Button\Button.svg"/></button>
+                            <button type="button" class="previous-step" onclick="history.go(-1)"><img  src = static\images\Button\Button-Back.svg/></button>    
+                        
+                        </fieldset>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+document.getElementById("btn").addEventListener("click", function(event){
+        
+    var errortxt = "";
+    if ($("input[type=radio]:checked").length === 0){
+        event.preventDefault();
+        errortxt = "You must select before moving forward";
+        document.getElementById("error_message").innerHTML = "<p>" + errortxt + "</p>";   
+      }
+    
+    return false;
+});
+function displayRadioValue() {
+        var ele = $("input[type=radio]:checked").val(); 
+        document.getElementById("step2").innerHTML= ele;
+        var subtype  = ele;
+        sessionStorage.setItem("subtype", subtype);
+        
+    }
+var category = sessionStorage.getItem("category");
+document.getElementById("step1").innerHTML= category;
+</script>
+{%endblock%}

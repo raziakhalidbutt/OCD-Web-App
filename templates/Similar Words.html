@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://allfont.net/allfont.css?fonts=roboto-medium" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet"> 
+	
+    <!-- <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'> -->
+    <!-- <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script> -->
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script type = "text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script type = "text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type = "text/javascript"  src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+<!-- Datatable -->
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"> -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script type = "text/javascript"  src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script type = "text/javascript"  src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script type = "text/javascript"  src="https://cdn.datatables.net/plug-ins/1.10.15/dataRender/datetime.js"></script>
+<script type = "text/javascript"  src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+<script type = "text/javascript"  src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+<script type = "text/javascript"  src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+<script type = "text/javascript"  src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+
+
+	<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+
+	<link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="static/style0.css">
+    <link rel="stylesheet" type="text/css" href= "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+  
+   
+</head>
+
+<body>
+	<div class="container">
+        
+        <div style="width: 100%; height: auto; position: relative">
+            <div class="undraw-discoverable-xws" >
+                <img  src = "static\images\Step 1_ Type\undraw_discoverable_xwsc.svg" />
+            </div>
+        </div>
+        <h1 class="vocabulary-explorer">Vocabulary Explorer</h1>
+        <h2 class="analysing-ocd-relate">Analyzing OCD related words</h2>
+		<div class="row">
+			<div class="ol-lg-12 form-group-lg">
+				<div class="px-0 pt-4 pb-0 mt-3 mb-3">
+					<form id="form" action="/Similarity" method="get">
+						<ul id="progressbar">
+							<li class="active" id="step1">Get Started</li>
+							<li class="active" id="step2">Sub-Type</li>
+							<li class="active" id="step3">Vocabulary Type</li>
+							<li class="active" id="step4">Search Query</li>
+                            <li class="active" id="step5">Select Model</li>
+						</ul>
+
+						<fieldset>
+							<h2 class="choose-your-desired">Choose the Model</h2>
+                            <input  type="hidden" name="query" value="{{query}}" />
+                            <input  type="hidden" name="phrase" value="{{phrase}}" />
+                            <div class="container">
+                                <div class="radio-tile-group">
+                                    <div class="input-container2">
+                                        <input id="model" class="radio-button" type="radio" name="model" value="Word2vec" onclick="displayRadioValue()" />
+                                        <div class="radio-tile2">
+                                            <div class="icon model0-icon">
+                                                <img  src = "static\images\Step 5_ Similar Words\word2vec.png" />
+                                            </div>
+                                            <label for="model" class="radio-tile-label2">Word2Vec</label>
+                                        </div>
+                                    </div>
+                                    <div class="input-container2">
+                                        <input id="model" class="radio-button" type="radio" name="model" value="Fasttext" onclick="displayRadioValue()"/>
+                                        <div class="radio-tile2">
+                                            <div class="icon model1-icon">
+                                                <img  src = "static\images\Step 5_ Similar Words\fasttext-logo-color-web.png" />
+                                            </div>
+                                            <label for="model" class="radio-tile-label3">fastText</label>
+                                        </div>
+                                    </div>
+                                    <div class="input-container2">
+                                        <input id="model" class="radio-button" type="radio" name="model" value="Glove" onclick="displayRadioValue()"/>
+                                        <div class="radio-tile2">
+                                            <div class="icon model2-icon">
+                                                <img  src = "static\images\Step 5_ Similar Words\Layer 0.png" />
+                                            </div>
+                                            <label for="model" class="radio-tile-label2">GloVe</label>
+                                        </div>
+                                    </div>
+                                </div>  
+                            </div>
+                            <div class="button">
+                                <button type="submit" class="btn0" >Find Similar Words
+                                    <img style="padding: 0px 0px 2px 8px ;" src = "static\images\Button\Path.svg"/>
+                                </button>
+                            </div>
+                         
+                            <button type="button" class="previous-step" onclick="history.go(-1)"><img  src = "static\images\Button\Button-Back.svg"/></button>    
+
+						</fieldset>
+                    
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+    <div class="container">
+        {% block content %}
+        
+            <div class="page-header">
+                <h1 class="text-center"></h1>
+            </div>
+        {% endblock %}
+    
+        
+    </div>
+</body>
+
+<script src="static/myscripts.js"></script>  
+<script>
+function displayRadioValue() {
+    var ele = $("input[type=radio]:checked").val(); 
+    document.getElementById("step5").innerHTML= ele;
+    var model  = ele;
+    sessionStorage.setItem("model", model);
+}    
+var category = sessionStorage.getItem("category");
+document.getElementById("step1").innerHTML= category;    
+var subtype = sessionStorage.getItem("subtype");
+document.getElementById("step2").innerHTML= subtype;  
+var vocab = sessionStorage.getItem("vocab");
+document.getElementById("step3").innerHTML= vocab;  
+var query = sessionStorage.getItem("query");
+document.getElementById("step4").innerHTML= query;  
+
+</script>
+</html>

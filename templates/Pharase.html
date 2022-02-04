@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+
+
+{%block content%}
+
+<body>
+	<div class="container">
+        
+        <div style="width: 100%; height: auto; position: relative">
+            <div class="undraw-discoverable-xws" >
+                <img  src = "static\images\Step 1_ Type\undraw_discoverable_xwsc.svg" />
+            </div>
+        </div>
+        <h1 class="vocabulary-explorer">Vocabulary Explorer</h1>
+        <h2 class="analysing-ocd-relate">Analyzing OCD related words</h2>
+		<div class="row ">
+			<div class="col-lg-12 form-group-lg">
+				<div class="px-0 pt-4 pb-0 mt-3 mb-3">
+					<form id="form"  action="/Similar Words" method="get">
+						<ul id="progressbar">
+							<li class="active" id="step1">Get Started</li>
+							<li class="active" id="step2">Sub-Type</li>
+							<li class="active" id="step3">Vocabulary Type</li>
+							<li class="active"id="step4">Search Query</li>
+                            <li id="step5">Select Model</li>
+						</ul>
+					
+						<fieldset>
+
+							<div class="main">
+								<div class="form-group has-search">
+									<span class="fa fa-search form-control-feedback"></span>
+									<input type="text" id="quicksearch" class="form-control" placeholder="Search with the word or whole phrase">
+								</div>
+							</div>
+							<div class="ma">
+								<div id="filters" class="button-group">
+									<button type="button" id="color2"  class="button0 is-checked" data-filter="*">Show All</button>
+									<button type="button" id="color1"  class="button0" name="grams" value="bigram" onclick="get1()" data-filter=".bigram"><img  style=" padding-right: 9.5px;" src = "static\images\Button\Group.svg"/>Bi-grams</button>
+									<button  type="button" id="color" class="button0" name="grams" value="trigram" onclick="get()" data-filter=".trigram"><img style=" padding-right: 10.5px;" src = "static\images\Button\Group 2.svg"/>Tri-grams</button>
+									<button type="button" id="color0"  class="button0"name="grams" value="fourgram" onclick="get0()" data-filter=".fourgram"><img style=" padding-right: 10.5px;" src = "static\images\Button\Group 3.svg"/>Four-grams</button>
+								</div>
+							</div>
+							<div  class="grid">
+								
+								{%for j,i in enumerate(bigram)%}	
+								<div  id="{{j}}" class="element bigram"  data-category="bigram" >
+									<input type="radio" id="{{i}}" class="chip"  name='gram' value="{{i}}" onclick="displayRadioValue()"/>
+									<label id="bgram" for="{{i}}" class="md-chip-hover"> {{i}}</label>
+								</div>
+								{%endfor%}
+								
+
+								{%for j,i in enumerate(trigram)%}
+								<div id="{{j}}"  class="element trigram" data-category="trigram">
+									<input type="radio" id="{{i}}" class="chip" name='gram' value="{{i}}" onclick="displayRadioValue()"/>
+									<label id="tgram" for="{{i}}" class="md-chip-hover"> {{i}}</label>
+								</div>
+								{%endfor%}
+								
+								
+								{%for j,i in enumerate(fourgram)%}
+								<div id="{{j}}"  class="element fourgram" data-category="fourgram">
+									<input type="radio" id="{{i}}" class="chip" name='gram' value="{{i}}" onclick="displayRadioValue()"/>
+									<label id="fgram" for="{{i}}" class="md-chip-hover"> {{i}}</label>
+								</div>
+								{%endfor%}
+								
+							</div>  
+							
+							<input type="hidden" id="g" name="ngrams" value="">
+							<div id="error_message"></div>
+							<button id="btn0" type="submit" class="next-step" ><img  src = "static\images\Button\Button.svg"/></button>
+							<button type="button" class="previous-step" onclick="history.go(-1)"><img  src = static\images\Button\Button-Back.svg/></button>    
+				
+						</fieldset>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+
+<script>
+document.getElementById("btn0").addEventListener("click", function(event){
+        
+		var errortxt = "";
+		if ($("input[type=radio]:checked").length === 0){
+			event.preventDefault();
+			errortxt = "You must select before moving forward";
+			document.getElementById("error_message").innerHTML = "<p>" + errortxt + "</p>";  
+			
+		  }
+		
+		  return false; 
+	});
+function displayRadioValue() {
+	
+    var ele = $("input[type=radio]:checked").val(); 
+    document.getElementById("step4").innerHTML= ele;
+    var query  = ele;
+    sessionStorage.setItem("query", query);
+}    
+var category = sessionStorage.getItem("category");
+document.getElementById("step1").innerHTML= category;    
+var subtype = sessionStorage.getItem("subtype");
+document.getElementById("step2").innerHTML= subtype;  
+var vocab = sessionStorage.getItem("vocab");
+document.getElementById("step3").innerHTML= vocab;  
+
+</script>
+
+{%endblock%}

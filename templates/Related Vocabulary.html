@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+
+{%block content%}
+<body>
+	<div class="container">
+        
+        <div style="width: 100%; height: auto; position: relative">
+            <div class="undraw-discoverable-xws" >
+                <img  src = "static\images\Step 1_ Type\undraw_discoverable_xwsc.svg" />
+            </div>
+            <h1 class="vocabulary-explorer">Vocabulary Explorer</h1>
+            <h2 class="analysing-ocd-relate">Analyzing OCD related words</h2>
+        </div>
+
+		<div class="row ">
+			<div class="col-lg-12 form-group-lg">
+				<div class="px-0 pt-4 pb-0 mt-3 mb-3">
+					<form id="form"  method="get">
+						<ul id="progressbar">
+							<li class="active"  id="step1">Get Started</li>
+							<li class="active" id="step2">Sub-Type</li>
+							<li class="active" id="step3">Vocabulary Type</li>
+							<li id="step4">Search Query</li>
+                            <li id="step5">Select Model</li>
+						</ul>
+
+						<fieldset>
+						    <h2 class="choose-your-desired">Choose the Vocabulary Result Type </h2>
+                            <input type="hidden" id="subtype" name="subtype" value="{{subtype}}">
+                            
+                            <div class="container">
+                                <div class="radio-tile-group">
+                                    <div class="input-container1">
+                                        <input id="Words" class="radio-button" type="radio" name="radio" value="Words" onclick="displayRadioValue()"/>
+                                        <div class="radio-tile1">
+                                            <div class="icon vocabulary-icon">
+                                                <img  src = "static\images\Step 3_ Related Vocabulary\Word.svg" />
+                                            </div>
+                                            
+                                        </div>
+                                        <label for="Words" class="radio-tile-label1">Words </label>
+                                            <div class="oval">
+                                                <p class="o">
+                                                    {{unigram}}
+                                                </p>
+                                            </div>
+                                    </div>
+                                    <div class="input-container1">
+                                        <input id="Pharases" class="radio-button" type="radio" name="radio" value="Phrases" onclick="displayRadioValue()"/>
+                                        <div class="radio-tile1">
+                                            <div class="icon vocabulary-icon">
+                                                <img  src = "static\images\Step 3_ Related Vocabulary\Phrases.svg" />
+                                            </div>
+                                            
+                                        </div>
+                                        <label for="Pharases" class="radio-tile-label1">Phrases</label>
+                                            <div class="oval">
+                                                <p class="o">
+                                                    {{pharase}}
+                                                </p>
+                                            </div>
+                                    </div>
+                                </div>  
+                            </div>
+                            
+                            <button type="button" class="next-step" onclick="next0()"><img  src = "static\images\Button\Button.svg"/></button>
+                            <button type="button" class="previous-step" onclick="history.go(-1)"><img  src = static\images\Button\Button-Back.svg/></button>    
+      
+						</fieldset>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+function displayRadioValue() {
+    var ele = $("input[type=radio]:checked").val(); 
+    document.getElementById("step3").innerHTML= ele;
+    var vocab  = ele;
+    sessionStorage.setItem("vocab", vocab);
+}    
+var category = sessionStorage.getItem("category");
+document.getElementById("step1").innerHTML= category;    
+var subtype = sessionStorage.getItem("subtype");
+document.getElementById("step2").innerHTML= subtype;    
+</script>
+{%endblock%}
